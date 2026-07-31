@@ -1,55 +1,37 @@
-alphabet = "abcdefghijklmnopqrstuvwxyz"
-
-def ceaserCypher():
-    ciphertext = []
-    plaintext = input("input plaintext : ")
-    plaintext = list(plaintext.lower())
-    key = int(input("shift amount : "))
-    for letter in plaintext:
-        try:
-            pos = alphabet.index(letter)
-            newpos = (pos + key) % 26
-            ciphertext.append(alphabet[newpos])
-        except ValueError: 
-            ciphertext.append(letter)
-            
-
-    print("".join(ciphertext))
-
-def VigenèreCypher():
-    ciphertext = []
-    plaintext = input("input plaintext : ")
-    plaintext = list(plaintext.lower())
-    key = input("input cypher key : ")
-    key_index = 0
-    for letter in plaintext:
-        if letter in alphabet:
-            pos = alphabet.index(letter)
-            keypos = alphabet.index(key[key_index % len(key)])
-            newpos = (pos + keypos) % 26
-            ciphertext.append(alphabet[newpos])
-            key_index += 1
-        else:
-            ciphertext.append(letter)
-
-    print("".join(ciphertext))
-
-
-
-
-
-
-
+# main.py
+from decrypt import Decryptor
+from encrypt import Encryptor
 
 
 def main():
-    choice = int(input("Which Cypher methord would you like to use \n[1] Ceaser Cypher \n[2] Vigenère Cypher \n"))
-    match choice:
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    encryptor = Encryptor(alphabet)
+    decryptor = Decryptor(alphabet)
+
+    action = int(input("What do u want to do ? \n [1] Encrypt\n [2] Decrypt \n"))
+    match action:
         case 1:
-            ceaserCypher()
+            cypher = int(input("Which algorithm do you want to use ? \n[1] Ceaser  \n[2] Vigenère  \n"))
+            match cypher:
+                case 1:
+                    plaintext = input("input plaintext : ").lower()
+                    key = int(input("input key : "))
+                    encryptor.caesar(plaintext, key)
+                case 2:
+                    plaintext = input("input plaintext : ").lower()
+                    key = input("input key : ").lower()
+                    encryptor.vigenere(plaintext, key)
         case 2:
-            VigenèreCypher()
+            cypher = int(input("Which algorithm do you want to use ? \n[1] Ceaser  \n[2] Vigenère  \n"))
+            match cypher:
+                case 1:
+                    cyphertext = input("input cyphertext : ").lower()
+                    key = int(input("input key : "))
+                    decryptor.caesar(cyphertext, key)
+                case 2:
+                    cyphertext = input("input cyphertext : ").lower()
+                    key = input("input key : ").lower()
+                    decryptor.vigenere(cyphertext, key)
 
 if __name__ == '__main__':
     main()
-    
