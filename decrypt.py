@@ -12,8 +12,19 @@ class Decryptor:
                 plaintext.append(self.alphabet[newpos])
             except ValueError: 
                 plaintext.append(letter)
-        print("".join(plaintext))
+        return "".join(plaintext)
 
 
-    def vigenere(self, ciphertext, key):
-        pass
+    def vigenere(self, cyphertext, key):
+        plaintext = []
+        key_index = 0
+        for letter in cyphertext:
+            if letter in self.alphabet:
+                pos = self.alphabet.index(letter)
+                keypos = self.alphabet.index(key[key_index % len(key)])
+                newpos = (pos - keypos) % 26
+                plaintext.append(self.alphabet[newpos])
+                key_index += 1
+            else:
+                plaintext.append(letter)
+        return "".join(plaintext)

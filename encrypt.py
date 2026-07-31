@@ -12,7 +12,7 @@ class Encryptor:
                 ciphertext.append(self.alphabet[newpos])
             except ValueError: 
                 ciphertext.append(letter)
-        print("".join(ciphertext))
+        return "".join(ciphertext)
             
 
 
@@ -28,4 +28,4 @@ class Encryptor:
                 key_index += 1
             else:
                 ciphertext.append(letter)
-        print("".join(ciphertext))
+        return "".join(ciphertext)

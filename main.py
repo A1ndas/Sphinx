@@ -16,22 +16,22 @@ def main():
                 case 1:
                     plaintext = input("input plaintext : ").lower()
                     key = int(input("input key : "))
-                    encryptor.caesar(plaintext, key)
+                    print(encryptor.caesar(plaintext, key))
                 case 2:
                     plaintext = input("input plaintext : ").lower()
                     key = input("input key : ").lower()
-                    encryptor.vigenere(plaintext, key)
+                    print(encryptor.vigenere(plaintext, key))
         case 2:
             cypher = int(input("Which algorithm do you want to use ? \n[1] Ceaser  \n[2] Vigenère  \n"))
             match cypher:
                 case 1:
                     cyphertext = input("input cyphertext : ").lower()
                     key = int(input("input key : "))
-                    decryptor.caesar(cyphertext, key)
+                    print(decryptor.caesar(cyphertext, key))
                 case 2:
                     cyphertext = input("input cyphertext : ").lower()
                     key = input("input key : ").lower()
-                    decryptor.vigenere(cyphertext, key)
+                    print(decryptor.vigenere(cyphertext, key))
 
 if __name__ == '__main__':
     main()
