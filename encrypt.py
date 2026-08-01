@@ -29,3 +29,10 @@ class Encryptor:
             else:
                 ciphertext.append(letter)
         return "".join(ciphertext)
+
+    def xor(self, plaintext, key):
+        result_bytes = []
+        for i, letter in enumerate(plaintext):
+            result = ord(letter) ^ ord(key[i % len(key)])
+            result_bytes.append(result)
+        return bytes(result_bytes).hex()

@@ -28,3 +28,11 @@ class Decryptor:
             else:
                 plaintext.append(letter)
         return "".join(plaintext)
+
+    def xor(self, cyphertext, key):
+        plaintext = []
+        cyphertext = list(bytes.fromhex(cyphertext))
+        for i, letter in enumerate(cyphertext):
+            result = chr(letter ^ ord(key[i % len(key)]))
+            plaintext.append(result)
+        return "".join(plaintext)
