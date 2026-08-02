@@ -1,7 +1,6 @@
 # encrypt.py
 class Encryptor:
-    def __init__(self, alphabet):
-        self.alphabet = alphabet
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
 
     def caesar(self, plaintext, key):
         ciphertext = []
